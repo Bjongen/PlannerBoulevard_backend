@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "jen0lM1g/fFxx4xa5bAUAPsYWq4fa4ZLhmc+JEbLx8LE6C7SqdTadcLGmA9VkxG8aS2vIFxgrgDGGpQbWy7noA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\patri\\RiderProjects\\PlannerBoulevard_backend\\Worked\\Worked.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\patri\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512"
+  ],
+  "logs": []
+}

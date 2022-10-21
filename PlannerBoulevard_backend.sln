@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worked", "Worked\Worked.csproj", "{12A10FA2-C860-4C65-81DD-FD251301AB6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduling", "Scheduling\Scheduling.csproj", "{ED53EEBF-82EB-4215-8247-E93A1DC1B899}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Login", "Login\Login.csproj", "{658C447D-1264-42CD-9199-8B3A0C2B0C7E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12A10FA2-C860-4C65-81DD-FD251301AB6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12A10FA2-C860-4C65-81DD-FD251301AB6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12A10FA2-C860-4C65-81DD-FD251301AB6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12A10FA2-C860-4C65-81DD-FD251301AB6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED53EEBF-82EB-4215-8247-E93A1DC1B899}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED53EEBF-82EB-4215-8247-E93A1DC1B899}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED53EEBF-82EB-4215-8247-E93A1DC1B899}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED53EEBF-82EB-4215-8247-E93A1DC1B899}.Release|Any CPU.Build.0 = Release|Any CPU
+		{658C447D-1264-42CD-9199-8B3A0C2B0C7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{658C447D-1264-42CD-9199-8B3A0C2B0C7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{658C447D-1264-42CD-9199-8B3A0C2B0C7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{658C447D-1264-42CD-9199-8B3A0C2B0C7E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
