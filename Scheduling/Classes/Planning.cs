@@ -1,4 +1,6 @@
 using Scheduling.Dtos;
+using System;
+using System.Globalization;
 
 namespace Scheduling.Classes;
 
@@ -7,7 +9,7 @@ public class Planning
     public int PlanningId { get; set; }
     public DateTime Date { get; set; }
     public DateTime Time { get; set; }
-    public string DayOfWeek { get; set; }
+    public string Weekday { get; set; }
     public int WeekNumber { get; set; }
 
     public Planning(int planningId, DateTime date, DateTime time, string dayOfWeek, int weekNumber)
@@ -15,15 +17,56 @@ public class Planning
         PlanningId = planningId;
         Date = date;
         Time = time;
-        DayOfWeek = dayOfWeek;
+        Weekday = dayOfWeek;
         WeekNumber = weekNumber;
     }
 
+    public string GetWeekDay(DateTime date)
+    {
+        DayOfWeek day = CultureInfo.InvariantCulture.Calendar.GetDayOfWeek(date);
+        return day.ToString();
+    }
+
+    private static int GetIso8601WeekOfYear(DateTime date)
+    {
+        DayOfWeek day = CultureInfo.InvariantCulture.Calendar.GetDayOfWeek(date);
+        if (day >= DayOfWeek.Monday && day <= DayOfWeek.Wednesday)
+        {
+            date = date.AddDays(3);
+        }
+
+        return CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(date, CalendarWeekRule.FirstFourDayWeek,
+            DayOfWeek.Monday);
+    }
+
+    private DateTime GetLastDateOfThisWeek()
+    {
+        DateTime date = DateTime.Now;
+        DayOfWeek day = CultureInfo.InvariantCulture.Calendar.GetDayOfWeek(date);
+        while (day != DayOfWeek.Sunday)
+        {
+            date = date.AddDays(1);
+            day++;
+        }
+        return date;
+    }
+
+    public DateTime GetEndDateFromWeekNumber(int Selectedweek)
+    {
+        int weekNumber = GetIso8601WeekOfYear(GetLastDateOfThisWeek());
+        int difference = 0;
+        if (weekNumber != Selectedweek)
+        {
+            difference = Selectedweek - weekNumber;
+        }
+        DateTime endDate = GetLastDateOfThisWeek().AddDays(difference * 7);
+        return endDate;
+    }
     public Planning(DateTime date, DateTime time, string dayOfWeek, int weekNumber)
     {
         Date = date;
         Time = time;
-        DayOfWeek = dayOfWeek;
+        Weekday = dayOfWeek;
         WeekNumber = weekNumber;
     }
 
@@ -32,7 +75,7 @@ public class Planning
         PlanningId = planningDto.PlanningId;
         Date = planningDto.Date;
         Time = planningDto.Time;
-        DayOfWeek = planningDto.DayOfWeek;
+        Weekday = planningDto.DayOfWeek;
         WeekNumber = planningDto.WeekNumber;
     }
 
@@ -43,7 +86,7 @@ public class Planning
             PlanningId = PlanningId,
             Date = Date,
             Time = Time,
-            DayOfWeek = DayOfWeek,
+            DayOfWeek = Weekday,
             WeekNumber = WeekNumber
         };
     } 
