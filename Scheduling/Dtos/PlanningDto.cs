@@ -1,6 +1,6 @@
 namespace Scheduling.Dtos;
 
-public struct PlanningDto
+public class PlanningDto
 {
     public int PlanningId { get; set; }
     public DateTime Date { get; set; }

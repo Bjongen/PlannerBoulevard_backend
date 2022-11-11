@@ -6,22 +6,22 @@ using Scheduling.Interfaces;
 
 namespace Scheduling.Containers;
 
-public class PlanningContainer
+public class PlanningContainer : IPlanningContainer
 {
-    public List<Planning> _plannings;
+    public List<PlanningDto> _plannings;
     private IPlanningDal _planningDal;
 
     public PlanningContainer(IPlanningDal planningDal)
     {
-        _plannings = new List<Planning>();
+        _plannings = new List<PlanningDto>();
         _planningDal = planningDal;
     }
-    public IReadOnlyCollection<Planning> GetPlannings()
+    public List<PlanningDto> GetPlannings()
     { 
         return _plannings;
     }
     
-    public IList<PlanningDto> GetAllPlannings()
+    public List<PlanningDto> GetAllPlannings()
     {
         return _planningDal.GetAll();
     }
@@ -31,14 +31,14 @@ public class PlanningContainer
         return _planningDal.GetById(planningId);
     }
 
-    public List<PlanningDto> GetAllFromThisWeek(int weekNumber)
+    public List<PlanningDto> GetAllFromThisWeek(DateTime date)
     {
-        return _planningDal.GetAllFromThisWeek(weekNumber);
+        return _planningDal.GetAllFromThisWeek(date);
     }
 
-    public List<PlanningDto> GetAllFromWorkerThisWeek(int accountId, int weekNumber)
+    public List<PlanningDto> GetAllFromWorkerThisWeek(int accountId, DateTime date)
     {
-        return _planningDal.GetAllFromWorkerThisWeek(accountId, weekNumber);
+        return _planningDal.GetAllFromWorkerThisWeek(accountId, date);
     }
     public int CreatePlanning(PlanningDto planningDto, int accountId)
     {

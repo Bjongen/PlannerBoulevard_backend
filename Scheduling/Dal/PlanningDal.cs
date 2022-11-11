@@ -52,18 +52,18 @@ public class PlanningDal : IPlanningDal
             throw new Exception(e.Message);
         }
     }
-    public List<PlanningDto> GetAllFromThisWeek(int weeknumber)
+    public List<PlanningDto> GetAllFromThisWeek(DateTime date)
     {
         var sql = "Select * From Planning " +
-                  "Where WeekNumber = @WeekNumber" +
-                  ";";
+                  "Where Date <= @date" +
+                  "And Date >= @date-6;";
         try
         {
             using (_dbConnection)
             {
                 return _dbConnection.Query<PlanningDto>(sql, new
                 {
-                    weeknumber
+                    date
                 }).ToList();
             }
         }
@@ -73,9 +73,10 @@ public class PlanningDal : IPlanningDal
         }
     }
 
-    public List<PlanningDto> GetAllFromWorkerThisWeek(int accountId, int weeknumber)
+    public List<PlanningDto> GetAllFromWorkerThisWeek(int accountId, DateTime date)
     {
-        var sql = "Select * From Planning Where AccountId = @accountId And WeekNumber = @weekNumber";
+        var sql = "Select * From Planning Where AccountId = @accountId" +
+                  "And Date between @date And @date-6";
         try
         {
             using (_dbConnection)
@@ -83,7 +84,7 @@ public class PlanningDal : IPlanningDal
                 return _dbConnection.Query<PlanningDto>(sql, new
                 {
                     accountId,
-                    weeknumber
+                    date
                 }).ToList();
             }
         }
